@@ -2,6 +2,9 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'
 
+configurations {
+    provided
+}
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
@@ -29,6 +32,8 @@ android {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    provided "com.android.support:appcompat-v7:$android_support_version"
+    provided "com.android.support:design:$android_support_version"
 }
 
 publish {
