@@ -1,7 +1,10 @@
 package io.github.azaiats.kotlinextensions
 
 import android.app.Activity
+import android.app.NotificationManager
 import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Intent
 import android.support.annotation.BoolRes
 import android.support.annotation.IntegerRes
@@ -41,5 +44,7 @@ fun Context.inflateLayout(@LayoutRes layoutId: Int, parent: ViewGroup? = null, a
         = LayoutInflater.from(this).inflate(layoutId, parent, attachToRoot)
 
 val Context.inputManager: InputMethodManager?
-    get() = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+    get() = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
 
+val Context.notificationManager: NotificationManager?
+    get() = getSystemService(NOTIFICATION_SERVICE) as? NotificationManager

@@ -1,8 +1,6 @@
 # Kotlinextensions
 Kotlin library for Android providing useful extensions to eliminate boilerplate code
 
-[![codebeat badge](https://codebeat.co/badges/f87b8f05-dcf0-4b75-bb84-f847d29a1762)](https://codebeat.co/projects/github-com-a-zaiats-kotlinextensions)
-
 ## License
     Copyright 2016 Andrei Zaiats
 
