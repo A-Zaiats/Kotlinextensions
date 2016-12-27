@@ -3,8 +3,8 @@ package io.github.azaiats.kotlinextensions
 import android.support.annotation.ColorRes
 import android.support.annotation.IdRes
 import android.support.annotation.StringRes
+import android.support.design.widget.BaseTransientBottomBar.Duration
 import android.support.design.widget.Snackbar
-import android.support.design.widget.Snackbar.Duration
 import android.view.View
 
 /**
