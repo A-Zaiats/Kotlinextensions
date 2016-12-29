@@ -24,6 +24,7 @@ methods:
 - `toast(text: CharSequence, duration: Int = Toast.LENGTH_LONG)` - show toast with message.
 - `toast(@StringRes textId: Int, duration: Int = Toast.LENGTH_LONG)` - show toast with message from sting resources.
 - `startActivity<ActivityClass>()` - launch a new activity with no options specified.
+- `startService<ServiceClass>()` - launch a new service with no options specified.
 - `getInteger(@IntegerRes id: Int)` - returns the integer value contained in the resource.
 - `getBoolean(@BoolRes id: Int)` - returns the boolean value contained in the resource.
 - `inflateLayout(@LayoutRes layoutId: Int, parent: ViewGroup? = null, attachToRoot: Boolean = false)` - inflate a new view.

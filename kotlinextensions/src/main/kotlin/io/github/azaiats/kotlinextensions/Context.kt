@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.KeyguardManager
 import android.app.Notification
 import android.app.NotificationManager
+import android.app.Service
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Context.INPUT_METHOD_SERVICE
@@ -50,6 +51,8 @@ val Context.inflater: LayoutInflater
     get() = LayoutInflater.from(this)
 
 inline fun <reified T : Activity> Context?.startActivity() = this?.startActivity(Intent(this, T::class.java))
+
+inline fun <reified T : Service> Context?.startService() = this?.startService(Intent(this, T::class.java))
 
 fun Context?.toast(text: CharSequence, duration: Int = Toast.LENGTH_LONG) = this?.let { Toast.makeText(it, text, duration).show() }
 
