@@ -41,3 +41,7 @@ fun SupportFragment.makeCall(number: String) = activity.makeCall(number)
 fun Fragment.sendSms(number: String, text: String = "") = activity.sendSms(number, text)
 
 fun SupportFragment.sendSms(number: String, text: String = "") = activity.sendSms(number, text)
+
+fun Fragment.rate() = activity.rate()
+
+fun SupportFragment.rate() = activity.rate()

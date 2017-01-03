@@ -18,6 +18,7 @@ system managers as context's read-only properties:
 - notificationManager
 - keyguardManager
 - telephonyManager
+- devicePolicyManager
 
 methods:
 
@@ -33,6 +34,7 @@ methods:
 - `email(email: String, subject: String = "", text: String = ""): Boolean` - send an email.
 - `makeCall(number: String): Boolean` - make a phone call
 - `sendSms(number: String, text: String = ""): Boolean` - send an sms.
+- `rate(): Boolean` - open current app on the Google Play Store.
 
 #### Fragment extensions
 
@@ -45,6 +47,7 @@ methods:
 - `email(email: String, subject: String = "", text: String = ""): Boolean` - send an email.
 - `makeCall(number: String): Boolean` - make a phone call
 - `sendSms(number: String, text: String = ""): Boolean` - send an sms.
+- `rate(): Boolean` - open current app on the Google Play Store.
 
 #### Useful functions
 

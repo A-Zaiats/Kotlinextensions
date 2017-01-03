@@ -5,8 +5,10 @@ import android.app.KeyguardManager
 import android.app.Notification
 import android.app.NotificationManager
 import android.app.Service
+import android.app.admin.DevicePolicyManager
 import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Context.DEVICE_POLICY_SERVICE
 import android.content.Context.INPUT_METHOD_SERVICE
 import android.content.Context.KEYGUARD_SERVICE
 import android.content.Context.NOTIFICATION_SERVICE
@@ -77,6 +79,9 @@ val Context.keyguardManager: KeyguardManager?
 val Context.telephonyManager: TelephonyManager?
     get() = getSystemService(TELEPHONY_SERVICE) as? TelephonyManager
 
+val Context.devicePolicyManager: DevicePolicyManager?
+    get() = getSystemService(DEVICE_POLICY_SERVICE) as? DevicePolicyManager
+
 inline fun Context.notification(body: NotificationCompat.Builder.() -> Unit): Notification {
     val builder = NotificationCompat.Builder(this)
     builder.body()
@@ -145,3 +150,5 @@ fun Context.sendSms(number: String, text: String = ""): Boolean {
         return false
     }
 }
+
+fun Context.rate(): Boolean = browse("market://details?id=$packageName") or browse("http://play.google.com/store/apps/details?id=$packageName")
