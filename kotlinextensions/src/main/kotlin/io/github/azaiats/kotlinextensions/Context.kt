@@ -52,6 +52,14 @@ val Context.displayMetricks: DisplayMetrics
 val Context.inflater: LayoutInflater
     get() = LayoutInflater.from(this)
 
+inline fun <reified T : Any> Context.intent() = Intent(this, T::class.java)
+
+inline fun <reified T : Any> Context.intent(body: Intent.() -> Unit): Intent {
+    val intent = Intent(this, T::class.java)
+    intent.body()
+    return intent
+}
+
 inline fun <reified T : Activity> Context?.startActivity() = this?.startActivity(Intent(this, T::class.java))
 
 inline fun <reified T : Service> Context?.startService() = this?.startService(Intent(this, T::class.java))
@@ -102,11 +110,10 @@ fun Context.browse(url: String, newTask: Boolean = false): Boolean {
 }
 
 fun Context.share(text: String, subject: String = ""): Boolean {
-    val intent = intent {
-        type = "text/plain"
-        putExtra(EXTRA_SUBJECT, subject)
-        putExtra(EXTRA_TEXT, text)
-    }
+    val intent = Intent()
+    intent.type = "text/plain"
+    intent.putExtra(EXTRA_SUBJECT, subject)
+    intent.putExtra(EXTRA_TEXT, text)
     try {
         startActivity(createChooser(intent, null))
         return true

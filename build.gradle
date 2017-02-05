@@ -2,14 +2,14 @@
 
 buildscript {
     ext {
-        kotlin_version = '1.0.5-3'
+        kotlin_version = '1.0.6'
         android_support_version = '25.1.0'
     }
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.0-beta1'
+        classpath 'com.android.tools.build:gradle:2.3.0-beta2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.novoda:bintray-release:0.3.4'
 

@@ -1,5 +1,6 @@
 package io.github.azaiats.kotlinextensions
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -22,6 +23,12 @@ inline fun intent(action: String, body: Intent.() -> Unit): Intent {
 
 inline fun intent(action: String, uri: Uri, body: Intent.() -> Unit): Intent {
     val intent = Intent(action, uri)
+    intent.body()
+    return intent
+}
+
+inline fun <reified T : Any> intent(context: Context, body: Intent.() -> Unit): Intent {
+    val intent = Intent(context, T::class.java)
     intent.body()
     return intent
 }
