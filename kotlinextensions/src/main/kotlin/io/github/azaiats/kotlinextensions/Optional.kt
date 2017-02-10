@@ -25,6 +25,10 @@ class Optional<T> private constructor(private val value: T?) {
 
     fun orElseGet(producer: () -> T): T = value ?: producer()
 
+    fun orElseNullable(other: T?): T? = value ?: other
+
+    fun orEldeGetNullable(producer: () -> T?): T? = value ?: producer()
+
     fun <E: Throwable> orElseThrow(producer: () -> E): T = value ?: throw producer()
 
     override fun equals(other: Any?): Boolean {
