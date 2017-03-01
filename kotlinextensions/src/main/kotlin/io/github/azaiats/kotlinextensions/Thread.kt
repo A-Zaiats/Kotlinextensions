@@ -2,6 +2,8 @@ package io.github.azaiats.kotlinextensions
 
 import android.os.Handler
 import android.os.Looper
+import java.util.concurrent.TimeUnit
+import java.util.concurrent.TimeUnit.MILLISECONDS
 
 /**
  * @author Andrei Zaiats
@@ -11,12 +13,12 @@ fun runOnUiThread(action: () -> Unit){
     if (ContextHandler.mainThread == Thread.currentThread()) action() else ContextHandler.handler.post { action() }
 }
 
-fun runDelayed(delayMillis: Long, action: () -> Unit) {
-    Handler().postDelayed(action, delayMillis)
+fun runDelayed(delay: Long, timeUnit: TimeUnit = MILLISECONDS, action: () -> Unit) {
+    Handler().postDelayed(action, timeUnit.toMillis(delay))
 }
 
-fun runDelayedOnUiThread(delayMillis: Long, action: () -> Unit) {
-    ContextHandler.handler.postDelayed(action, delayMillis)
+fun runDelayedOnUiThread(delay: Long, timeUnit: TimeUnit = MILLISECONDS, action: () -> Unit) {
+    ContextHandler.handler.postDelayed(action, timeUnit.toMillis(delay))
 }
 
 private object ContextHandler {
