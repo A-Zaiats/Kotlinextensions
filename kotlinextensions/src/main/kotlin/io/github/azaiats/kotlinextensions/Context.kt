@@ -43,16 +43,16 @@ import android.widget.Toast
  * @author Andrei Zaiats
  * @since 10/03/2016
  */
-val Context.displayWidth: Int
+inline val Context.displayWidth: Int
     get() = resources.displayMetrics.widthPixels
 
-val Context.displayHeight: Int
+inline val Context.displayHeight: Int
     get() = resources.displayMetrics.heightPixels
 
-val Context.displayMetricks: DisplayMetrics
+inline val Context.displayMetricks: DisplayMetrics
     get() = resources.displayMetrics
 
-val Context.inflater: LayoutInflater
+inline val Context.inflater: LayoutInflater
     get() = LayoutInflater.from(this)
 
 inline fun <reified T : Any> Context.intent() = Intent(this, T::class.java)
@@ -82,19 +82,19 @@ fun Context.getDrawable(@DrawableRes id: Int) = ContextCompat.getDrawable(this, 
 fun Context.inflateLayout(@LayoutRes layoutId: Int, parent: ViewGroup? = null, attachToRoot: Boolean = false): View
         = LayoutInflater.from(this).inflate(layoutId, parent, attachToRoot)
 
-val Context.inputManager: InputMethodManager?
+inline val Context.inputManager: InputMethodManager?
     get() = getSystemService(INPUT_METHOD_SERVICE) as? InputMethodManager
 
-val Context.notificationManager: NotificationManager?
+inline val Context.notificationManager: NotificationManager?
     get() = getSystemService(NOTIFICATION_SERVICE) as? NotificationManager
 
-val Context.keyguardManager: KeyguardManager?
+inline val Context.keyguardManager: KeyguardManager?
     get() = getSystemService(KEYGUARD_SERVICE) as? KeyguardManager
 
-val Context.telephonyManager: TelephonyManager?
+inline val Context.telephonyManager: TelephonyManager?
     get() = getSystemService(TELEPHONY_SERVICE) as? TelephonyManager
 
-val Context.devicePolicyManager: DevicePolicyManager?
+inline val Context.devicePolicyManager: DevicePolicyManager?
     get() = getSystemService(DEVICE_POLICY_SERVICE) as? DevicePolicyManager
 
 inline fun Context.notification(body: NotificationCompat.Builder.() -> Unit): Notification {
