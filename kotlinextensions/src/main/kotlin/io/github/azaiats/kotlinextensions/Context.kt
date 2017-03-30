@@ -1,15 +1,20 @@
 package io.github.azaiats.kotlinextensions
 
 import android.app.Activity
+import android.app.AlarmManager
 import android.app.KeyguardManager
 import android.app.Notification
 import android.app.NotificationManager
 import android.app.Service
 import android.app.admin.DevicePolicyManager
+import android.app.job.JobScheduler
 import android.content.ActivityNotFoundException
 import android.content.Context
+import android.content.Context.ALARM_SERVICE
+import android.content.Context.CONNECTIVITY_SERVICE
 import android.content.Context.DEVICE_POLICY_SERVICE
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.Context.JOB_SCHEDULER_SERVICE
 import android.content.Context.KEYGUARD_SERVICE
 import android.content.Context.NOTIFICATION_SERVICE
 import android.content.Context.TELEPHONY_SERVICE
@@ -22,6 +27,7 @@ import android.content.Intent.EXTRA_SUBJECT
 import android.content.Intent.EXTRA_TEXT
 import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.content.Intent.createChooser
+import android.net.ConnectivityManager
 import android.net.Uri
 import android.support.annotation.BoolRes
 import android.support.annotation.ColorRes
@@ -96,6 +102,15 @@ inline val Context.telephonyManager: TelephonyManager?
 
 inline val Context.devicePolicyManager: DevicePolicyManager?
     get() = getSystemService(DEVICE_POLICY_SERVICE) as? DevicePolicyManager
+
+inline val Context.connectivityManager: ConnectivityManager?
+    get() = getSystemService(CONNECTIVITY_SERVICE) as? ConnectivityManager
+
+inline val Context.alarmManager: AlarmManager?
+    get() = getSystemService(ALARM_SERVICE) as? AlarmManager
+
+inline val Context.jobScheduler: JobScheduler?
+    get() = getSystemService(JOB_SCHEDULER_SERVICE) as? JobScheduler
 
 inline fun Context.notification(body: NotificationCompat.Builder.() -> Unit): Notification {
     val builder = NotificationCompat.Builder(this)
