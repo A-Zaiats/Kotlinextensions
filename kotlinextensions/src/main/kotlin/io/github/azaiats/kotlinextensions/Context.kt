@@ -35,6 +35,7 @@ import android.support.annotation.DrawableRes
 import android.support.annotation.IntegerRes
 import android.support.annotation.LayoutRes
 import android.support.annotation.StringRes
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.NotificationCompat
 import android.telephony.TelephonyManager
@@ -72,6 +73,19 @@ inline fun <reified T : Any> Context.intent(body: Intent.() -> Unit): Intent {
 inline fun <reified T : Activity> Context?.startActivity() = this?.startActivity(Intent(this, T::class.java))
 
 inline fun <reified T : Service> Context?.startService() = this?.startService(Intent(this, T::class.java))
+
+inline fun <reified T : Activity> Context.startActivityWithAnimation(enterResId: Int = 0, exitResId: Int = 0) {
+    val intent = Intent(this, T::class.java)
+    val bundle = ActivityOptionsCompat.makeCustomAnimation(this, enterResId, exitResId).toBundle()
+    ContextCompat.startActivity(this, intent, bundle)
+}
+
+inline fun <reified T : Activity> Context.startActivityWithAnimation(enterResId: Int = 0, exitResId: Int = 0, intentBody: Intent.() -> Unit) {
+    val intent = Intent(this, T::class.java)
+    intent.intentBody()
+    val bundle = ActivityOptionsCompat.makeCustomAnimation(this, enterResId, exitResId).toBundle()
+    ContextCompat.startActivity(this, intent, bundle)
+}
 
 fun Context?.toast(text: CharSequence, duration: Int = Toast.LENGTH_LONG) = this?.let { Toast.makeText(it, text, duration).show() }
 
