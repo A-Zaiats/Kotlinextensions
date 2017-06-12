@@ -9,8 +9,10 @@ import android.app.Service
 import android.app.admin.DevicePolicyManager
 import android.app.job.JobScheduler
 import android.content.ActivityNotFoundException
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.Context.ALARM_SERVICE
+import android.content.Context.CLIPBOARD_SERVICE
 import android.content.Context.CONNECTIVITY_SERVICE
 import android.content.Context.DEVICE_POLICY_SERVICE
 import android.content.Context.INPUT_METHOD_SERVICE
@@ -122,6 +124,9 @@ inline val Context.connectivityManager: ConnectivityManager?
 
 inline val Context.alarmManager: AlarmManager?
     get() = getSystemService(ALARM_SERVICE) as? AlarmManager
+
+inline val Context.clipboardManager: ClipboardManager?
+    get() = getSystemService(CLIPBOARD_SERVICE) as? ClipboardManager
 
 inline val Context.jobScheduler: JobScheduler?
     get() = getSystemService(JOB_SCHEDULER_SERVICE) as? JobScheduler

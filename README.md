@@ -21,6 +21,7 @@ system managers as context's read-only properties:
 - devicePolicyManager
 - connectivityManager
 - alarmManager
+- clipboardManager
 - jobScheduler
 
 methods:
