@@ -6,12 +6,12 @@ configurations {
     provided
 }
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode Integer.parseInt(VERSION_CODE)
         versionName VERSION_NAME
     }
@@ -31,9 +31,9 @@ android {
 }
 
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    provided "com.android.support:appcompat-v7:$android_support_version"
-    provided "com.android.support:design:$android_support_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compileOnly "com.android.support:appcompat-v7:$android_support_version"
+    compileOnly "com.android.support:design:$android_support_version"
 }
 
 publish {

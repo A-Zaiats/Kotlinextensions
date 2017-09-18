@@ -33,8 +33,6 @@ methods:
 - `startService<ServiceClass>()` - launch a new service with no options specified.
 - `getInteger(@IntegerRes id: Int)` - returns the integer value contained in the resource.
 - `getBoolean(@BoolRes id: Int)` - returns the boolean value contained in the resource.
-- `getColor(@ColorRes id: Int)` - returns the Color contained in the resource.
-- `getDrawable(@DrawableRes id: Int)` - returns the Drawable contained in the resource.
 - `inflateLayout(@LayoutRes layoutId: Int, parent: ViewGroup? = null, attachToRoot: Boolean = false)` - inflate a new view.
 - `browse(url: String, newTask: Boolean = false): Boolean` - display the data by url.
 - `share(text: String, subject: String = ""): Boolean` - open a chooser for text sharing.

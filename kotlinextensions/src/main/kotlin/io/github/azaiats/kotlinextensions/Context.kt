@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package io.github.azaiats.kotlinextensions
 
 import android.app.Activity
@@ -31,15 +33,15 @@ import android.content.Intent.FLAG_ACTIVITY_NEW_TASK
 import android.content.Intent.createChooser
 import android.net.ConnectivityManager
 import android.net.Uri
+import android.os.Build
 import android.support.annotation.BoolRes
-import android.support.annotation.ColorRes
-import android.support.annotation.DrawableRes
 import android.support.annotation.IntegerRes
 import android.support.annotation.LayoutRes
+import android.support.annotation.RequiresApi
 import android.support.annotation.StringRes
 import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.app.NotificationCompat
 import android.support.v4.content.ContextCompat
-import android.support.v7.app.NotificationCompat
 import android.telephony.TelephonyManager
 import android.util.DisplayMetrics
 import android.view.LayoutInflater
@@ -97,10 +99,6 @@ fun Context.getInteger(@IntegerRes id: Int) = resources.getInteger(id)
 
 fun Context.getBoolean(@BoolRes id: Int) = resources.getBoolean(id)
 
-fun Context.getColor(@ColorRes id: Int) = ContextCompat.getColor(this, id)
-
-fun Context.getDrawable(@DrawableRes id: Int) = ContextCompat.getDrawable(this, id)
-
 fun Context.inflateLayout(@LayoutRes layoutId: Int, parent: ViewGroup? = null, attachToRoot: Boolean = false): View
         = LayoutInflater.from(this).inflate(layoutId, parent, attachToRoot)
 
@@ -129,8 +127,10 @@ inline val Context.clipboardManager: ClipboardManager?
     get() = getSystemService(CLIPBOARD_SERVICE) as? ClipboardManager
 
 inline val Context.jobScheduler: JobScheduler?
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     get() = getSystemService(JOB_SCHEDULER_SERVICE) as? JobScheduler
 
+// TODO support channels
 inline fun Context.notification(body: NotificationCompat.Builder.() -> Unit): Notification {
     val builder = NotificationCompat.Builder(this)
     builder.body()

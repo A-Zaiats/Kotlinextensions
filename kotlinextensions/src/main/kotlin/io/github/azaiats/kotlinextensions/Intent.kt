@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package io.github.azaiats.kotlinextensions
 
 import android.content.Context

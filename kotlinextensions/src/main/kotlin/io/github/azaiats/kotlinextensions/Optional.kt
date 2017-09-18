@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package io.github.azaiats.kotlinextensions
 
 /**
@@ -12,7 +14,7 @@ class Optional<T> private constructor(private val value: T?) {
 
         fun <T> ofNullable(value: T?) = Optional(value)
 
-        fun <T> empty() = Optional(null as T)
+        fun <T> empty() = Optional(null as T?)
     }
 
     fun get(): T = value ?: error("No value present")
@@ -27,7 +29,7 @@ class Optional<T> private constructor(private val value: T?) {
 
     fun orElseNullable(other: T?): T? = value ?: other
 
-    fun orEldeGetNullable(producer: () -> T?): T? = value ?: producer()
+    fun orElseGetNullable(producer: () -> T?): T? = value ?: producer()
 
     fun <E: Throwable> orElseThrow(producer: () -> E): T = value ?: throw producer()
 
