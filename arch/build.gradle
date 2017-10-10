@@ -10,12 +10,14 @@ android {
     compileSdkVersion Versions.TARGET_SDK
     buildToolsVersion Versions.BUILD_TOOLS
 
+
     defaultConfig {
         minSdkVersion Versions.MIN_SDK
         targetSdkVersion Versions.TARGET_SDK
         versionCode 1
         versionName VERSION_NAME
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -29,14 +31,15 @@ android {
 }
 
 dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Deps.KOTLIN_STD
     compileOnly Deps.SUPPORT_APPCOMPAT
-    compileOnly Deps.SUPPORT_DESIGN
+    compileOnly Deps.SUPPORT_ARCH
 }
 
 publish {
     groupId = GROUP
-    artifactId = "kotlinextensions-core"
+    artifactId = "kotlinextensions-arch"
     publishVersion = VERSION_NAME
     desc = DESCRIPTION
     website = WEBSITE

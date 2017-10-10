@@ -11,6 +11,7 @@ buildscript {
         classpath Deps.PLUGIN_GRADLE
         classpath Deps.PLUGIN_KOTLIN
         classpath Deps.PLUGIN_BINTRAY
+        classpath Deps.PLUGIN_DOKKA
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -26,8 +27,4 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-subprojects {
-    tasks.withType(Javadoc).all { enabled = false }
 }
