@@ -1,1 +1,1 @@
-include ':kotlinextensions'
+include ':kotlinextensions', ':arch'

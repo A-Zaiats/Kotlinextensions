@@ -1,17 +1,17 @@
+import io.github.azaiats.kotlinextensions.Deps
+import io.github.azaiats.kotlinextensions.Versions
+
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.novoda.bintray-release'
 
-configurations {
-    provided
-}
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion Versions.TARGET_SDK
+    buildToolsVersion Versions.BUILD_TOOLS
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 26
+        minSdkVersion Versions.MIN_SDK
+        targetSdkVersion Versions.TARGET_SDK
         versionCode Integer.parseInt(VERSION_CODE)
         versionName VERSION_NAME
     }
@@ -21,9 +21,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7
         targetCompatibility JavaVersion.VERSION_1_7
@@ -31,17 +28,16 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compileOnly "com.android.support:appcompat-v7:$android_support_version"
-    compileOnly "com.android.support:design:$android_support_version"
+    implementation Deps.KOTLIN_STD
+    compileOnly Deps.SUPPORT_APPCOMPAT
+    compileOnly Deps.SUPPORT_DESIGN
 }
 
 publish {
     groupId = GROUP
-    artifactId = ARTIFACT
-    version = VERSION_NAME
-    uploadName = GROUP
-    description = DESCRIPTION
+    artifactId = "kotlinextensions"
+    publishVersion = VERSION_NAME
+    desc = DESCRIPTION
     website = WEBSITE
     issueTracker = ISSUE_TRACKER
     repository = REPOSITORY
